@@ -22,7 +22,7 @@ pub struct CitySearch {}
 
 impl CitySearch {
     pub fn search(&self, param: &str) -> Vec<String> {
-        todo!()
+        return Vec::new()
     }
 }
 
