@@ -1,3 +1,5 @@
+const MIN_SEARCH_LEN: usize = 2;
+
 const CITIES: [&str; 16] = [
     "Paris",
     "Budapest",
@@ -23,17 +25,34 @@ pub struct CitySearch {}
 impl CitySearch {
     pub fn search(&self, text: &str) -> Vec<String> {
         let mut result = Vec::new();
-        let text = text.to_owned().to_lowercase();
-        if text.len() < 2 {
+        let text = Self::convert_to_lowercase(text);
+        if !Self::valid_length(&text) {
             return result;
         }
         for city in CITIES {
-            let lower = city.to_lowercase();
-            if lower.contains(text.as_str()) {
+            if Self::substring_match(city, &text) {
                 result.push(city.to_owned());
             }
         }
+
         return result;
+    }
+
+    fn convert_to_lowercase(text: &str) -> String {
+        text.to_owned().to_lowercase()
+    }
+
+    fn valid_length(text: &String) -> bool {
+        text.len() >= MIN_SEARCH_LEN
+    }
+
+    fn substring_match(city: &str, substr: &String) -> bool {
+        let lower = Self::convert_to_lowercase(city);
+        if lower.contains(substr.as_str()) {
+            return true
+        }
+
+        return false
     }
 }
 
