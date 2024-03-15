@@ -18,3 +18,6 @@ City names: Paris, Budapest, Skopje, Rotterdam, Valencia, Vancouver, Amsterdam, 
     For example for search text “Va”, the function should return Valencia and Vancouver
 
 3. The search functionality should be case insensitive
+4. The search functionality should work also when the search text is just a part of a city name
+
+    For example “ape” should return “Budapest” city

@@ -111,4 +111,22 @@ mod tests {
             "search term: 'Va', result: Valencia, Vancouver"
         );
     }
+
+    #[test]
+    fn given_valid_search_text_when_substring_match_middle_of_word_then_is_valid() {
+        // Arrange
+        let param = "ape";
+        let search = CitySearch {};
+
+        // Act
+        let result = search.search(param);
+
+        // Assert
+        assert_eq!(result.len(), 1, "Search term 'ape' returns one city");
+        assert_eq!(
+            result,
+            vec![String::from("Budapest")],
+            "search term: 'ape', matches: Budapest"
+        );
+    }
 }
