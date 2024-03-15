@@ -13,4 +13,7 @@ City names: Paris, Budapest, Skopje, Rotterdam, Valencia, Vancouver, Amsterdam, 
 ### Requirements
 
 1. If the search text is fewer than 2 characters, then should return no results. (It is an optimization feature of the search functionality.)
+2. If the search text is equal to or more than 2 characters, then it should return all the city names starting with the exact search text.
+
+    For example for search text “Va”, the function should return Valencia and Vancouver
 
