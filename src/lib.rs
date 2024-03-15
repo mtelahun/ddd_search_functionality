@@ -23,12 +23,13 @@ pub struct CitySearch {}
 impl CitySearch {
     pub fn search(&self, text: &str) -> Vec<String> {
         let mut result = Vec::new();
-        let text = text.to_owned();
+        let text = text.to_owned().to_lowercase();
         if text.len() < 2 {
             return result;
         }
         for city in CITIES {
-            if city.contains(text.as_str()) {
+            let lower = city.to_lowercase();
+            if lower.contains(text.as_str()) {
                 result.push(city.to_owned());
             }
         }
