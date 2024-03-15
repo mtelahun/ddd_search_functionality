@@ -21,8 +21,18 @@ const CITIES: [&str; 16] = [
 pub struct CitySearch {}
 
 impl CitySearch {
-    pub fn search(&self, param: &str) -> Vec<String> {
-        return Vec::new();
+    pub fn search(&self, text: &str) -> Vec<String> {
+        let mut result = Vec::new();
+        let text = text.to_owned();
+        if text.len() < 2 {
+            return result;
+        }
+        for city in CITIES {
+            if city.contains(text.as_str()) {
+                result.push(city.to_owned());
+            }
+        }
+        return result;
     }
 }
 
@@ -49,7 +59,7 @@ mod tests {
     #[test]
     fn given_valid_search_substring_then_return_all_cities_with_exact_match() {
         // Arrange
-        let param = "Pa";
+        let param = "Va";
         let search = CitySearch {};
 
         // Act
