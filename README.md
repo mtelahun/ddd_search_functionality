@@ -21,3 +21,5 @@ City names: Paris, Budapest, Skopje, Rotterdam, Valencia, Vancouver, Amsterdam, 
 4. The search functionality should work also when the search text is just a part of a city name
 
     For example “ape” should return “Budapest” city
+
+5. If the search text is a “*” (asterisk), then it should return all the city names.

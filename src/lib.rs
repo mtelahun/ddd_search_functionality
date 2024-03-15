@@ -129,4 +129,38 @@ mod tests {
             "search term: 'ape', matches: Budapest"
         );
     }
+
+    #[test]
+    fn given_asterisk_search_text_then_return_all_cities() {
+        // Arrange
+        let param = "*";
+        let search = CitySearch {};
+
+        // Act
+        let result = search.search(param);
+
+        // Assert
+        assert_eq!(
+            result,
+            vec![
+                String::from("Paris"),
+                String::from("Budapest"),
+                String::from("Skopje"),
+                String::from("Rotterdam"),
+                String::from("Valencia"),
+                String::from("Vancouver"),
+                String::from("Amsterdam"),
+                String::from("Vienna"),
+                String::from("Sydney"),
+                String::from("New York City"),
+                String::from("London"),
+                String::from("Bangkok"),
+                String::from("Hong Kong"),
+                String::from("Dubai"),
+                String::from("Rome"),
+                String::from("Istanbul"),
+            ],
+            "search term: '*', matches all cities"
+        );
+    }
 }
