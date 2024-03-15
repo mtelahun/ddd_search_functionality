@@ -73,4 +73,22 @@ mod tests {
             "search term: 'Va', result: Valencia, Vancouver"
         );
     }
+
+    #[test]
+    fn given_valid_search_text_when_search_then_result_is_case_insensitive() {
+        // Arrange
+        let param = "va";
+        let search = CitySearch {};
+
+        // Act
+        let result = search.search(param);
+
+        // Assert
+        assert_eq!(result.len(), 2, "Search term 'va' returns two cities");
+        assert_eq!(
+            result,
+            vec![String::from("Valencia"), String::from("Vancouver")],
+            "search term: 'Va', result: Valencia, Vancouver"
+        );
+    }
 }
