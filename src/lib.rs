@@ -26,6 +26,13 @@ impl CitySearch {
     pub fn search(&self, text: &str) -> Vec<String> {
         let mut result = Vec::new();
         let text = Self::convert_to_lowercase(text);
+        if Self::search_term_is_asterisk(&text) {
+            for c in CITIES {
+                result.push(c.to_owned())
+            }
+
+            return result;
+        }
         if !Self::valid_length(&text) {
             return result;
         }
@@ -44,6 +51,14 @@ impl CitySearch {
 
     fn valid_length(text: &String) -> bool {
         text.len() >= MIN_SEARCH_LEN
+    }
+
+    fn search_term_is_asterisk(text: &str) -> bool {
+        if text == "*" {
+            return true
+        }
+
+        return false
     }
 
     fn substring_match(city: &str, substr: &String) -> bool {
